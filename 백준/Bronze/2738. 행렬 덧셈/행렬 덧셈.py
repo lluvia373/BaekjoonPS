@@ -1,26 +1,19 @@
 n, m = map(int, input().split())
-list_a = [[0] * m for _ in range(n)]
-list_b = [[0] * m for _ in range(n)]
-new_list = [[0] * m for _ in range(n)]
 
-for x in range(n):
-    num = map(int, input().split())
-    numbers = list(num)
-    for y in range(m):
-        list_a[x][y] = numbers[y]
+# 두 행렬을 입력받는 함수
+def read_matrix():
+    return [list(map(int, input().split()))
+            for _ in range(n)]
 
-for x in range(n):
-    num = map(int, input().split())
-    numbers = list(num)
-    for y in range(m):
-        list_b[x][y] = numbers[y]
+# 두 행렬 입력
+list_a = read_matrix()
+list_b = read_matrix()
 
-for x in range(n):
-    for y in range(m):
-        new_list[x][y] = list_a[x][y] + list_b[x][y]
+# 두 행렬을 더한 결과를 계산
+new_list = [[list_a[x][y] + list_b[x][y] 
+             for y in range(m)] 
+            for x in range(n)]
 
-for x in range(n):
-    for y in range(m):
-        print(new_list[x][y], end=" ")
-    print()
-
+# 결과 출력
+for row in new_list:
+    print(" ".join(map(str,row)))
